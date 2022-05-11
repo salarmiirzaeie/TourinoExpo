@@ -1,85 +1,140 @@
-import React from "react";
-import {
-  Text,
-  Link,
-  HStack,
-  Center,
-  Heading,
-  Switch,
-  useColorMode,
-  NativeBaseProvider,
-  extendTheme,
-  VStack,
-  Box,
-} from "native-base";
-import NativeBaseIcon from "./components/NativeBaseIcon";
-import { Platform } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { CompanyDet } from "./Pages/CompanyDet";
+import { Explore } from "./Pages/Explore";
+import { TourDet } from "./Pages/TourDet";
+import { AntDesign } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
+import { Profile } from "./Pages/Profile";
+import { Direct } from "./components/Home/Direct";
+import { CampProfile } from "./Pages/CampProfile";
+import { SearchPage } from "./Pages/SearchPage";
+import { AddTour } from "./Pages/AddTour";
+import{Home2}from"./Pages/Home2"
+import { TourDet2 } from "./components/Details/TourDet2";
 
-// Define the config
-const config = {
-  useSystemColorMode: false,
-  initialColorMode: "dark",
-};
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+const MainStack = createNativeStackNavigator();
+import React,{Suspense} from 'react'
 
-// extend the theme
-export const theme = extendTheme({ config });
 
+import { Text ,NativeBaseProvider,Circle} from "native-base";
+import { Tourdet3 } from "./components/Details/Tourdet3";
 export default function App() {
+
   return (
-    <NativeBaseProvider>
-      <Center
-        _dark={{ bg: "blueGray.900" }}
-        _light={{ bg: "blueGray.50" }}
-        px={4}
-        flex={1}
+   
+    <NavigationContainer>
+      <MainStack.Navigator
+        screenOptions={{
+          headerShown: false,
+        }}
       >
-        <VStack space={5} alignItems="center">
-          <NativeBaseIcon />
-          <Heading size="lg">Welcome to NativeBase</Heading>
-          <HStack space={2} alignItems="center">
-            <Text>Edit</Text>
-            <Box
-              _web={{
-                _text: {
-                  fontFamily: "monospace",
-                  fontSize: "sm",
-                },
-              }}
-              px={2}
-              py={1}
-              _dark={{ bg: "blueGray.800" }}
-              _light={{ bg: "blueGray.200" }}
-            >
-              App.js
-            </Box>
-            <Text>and save to reload.</Text>
-          </HStack>
-          <Link href="https://docs.nativebase.io" isExternal>
-            <Text color="primary.500" underline fontSize={"xl"}>
-              Learn NativeBase
-            </Text>
-          </Link>
-          <ToggleDarkMode />
-        </VStack>
-      </Center>
-    </NativeBaseProvider>
+        
+        <MainStack.Screen name="Tabstack" component={Tabstack} />
+        <MainStack.Screen name="TourDet" component={TourDet} />
+        <MainStack.Screen name="TourDet3" component={Tourdet3} />
+
+        <MainStack.Screen name="CompanyDet" component={CompanyDet} />
+        <MainStack.Screen name="Direct" component={Direct} />
+        <MainStack.Screen name="SearchPage" component={SearchPage} />
+        <MainStack.Screen name="AddTour1" component={AddTour} />
+
+
+
+      </MainStack.Navigator>
+    </NavigationContainer>
+  );
+}
+const Tab = createMaterialBottomTabNavigator();
+
+function Tabstack() {
+  return (
+    
+    <Tab.Navigator
+    labeled={true}
+    barStyle={{
+      position: "absolute",
+      backgroundColor: "white",
+      borderRadius: 35,
+      borderTopColor: "white",
+      stopAnimation: "50",
+    }}
+     
+    
+    >
+      <Tab.Screen
+        options={{
+          unmountOnBlur: true,
+
+          headerShown: false,
+          tabBarShowLabel: false,
+
+          tabBarIcon: ({ color }) => (
+            <AntDesign name="home" size={24} color={color} />
+          ),
+          tabBarActiveTintColor: "#00A693",
+        }}
+        name="Homea"
+        component={Home2}
+      />
+      <Tab.Screen
+        name="Settings"
+        options={{
+          tabBarShowLabel: false,
+          unmountOnBlur: true,
+          tabBarActiveTintColor: "#00A693",
+          headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="compass-outline" size={24} color={color} />
+          ),
+        }}
+        component={Explore}
+      />
+      <Tab.Screen
+        name=" "
+        
+        options={{
+         
+          tabBarIcon: ({ color }) => (
+            <NativeBaseProvider>
+              <Circle size={41} mt={-2} shadow={5} bg="#00A693">
+                <Feather name="plus" size={30} color={color} />
+              </Circle>
+            </NativeBaseProvider>
+          ),
+        }}
+        component={Tourdet3}
+      />
+      <Tab.Screen
+        name="s"
+        options={{
+          tabBarShowLabel: false,
+          unmountOnBlur: true,
+          tabBarActiveTintColor: "#00A693",
+          headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <AntDesign name="hearto" size={24} color={color} />),
+        }}
+        component={Profile}
+      />
+      <Tab.Screen
+        name="Esxplore"
+        options={{
+          tabBarShowLabel: false,
+          unmountOnBlur: true,
+          tabBarActiveTintColor: "#00A693",
+          headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <Feather name="user" size={24} color={color} />
+          ),
+        }}
+        component={CampProfile}
+      />
+    </Tab.Navigator>
   );
 }
 
-// Color Switch Component
-function ToggleDarkMode() {
-  const { colorMode, toggleColorMode } = useColorMode();
-  return (
-    <HStack space={2} alignItems="center">
-      <Text>Dark</Text>
-      <Switch
-        isChecked={colorMode === "light"}
-        onToggle={toggleColorMode}
-        aria-label={
-          colorMode === "light" ? "switch to dark mode" : "switch to light mode"
-        }
-      />
-      <Text>Light</Text>
-    </HStack>
-  );
-}
+
+

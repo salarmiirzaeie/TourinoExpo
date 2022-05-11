@@ -25,7 +25,18 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
     "react-native-safe-area-context": "3.2.0",
     "react-native-svg": "12.1.1",
-    "react-native-web": "~0.13.12"
+    "react-native-web": "~0.13.12",
+    "@expo-google-fonts/inter": "^0.2.2",
+    "@react-navigation/material-bottom-tabs": "^6.2.1",
+    "@react-navigation/material-top-tabs": "^6.2.1",
+    "@react-navigation/native": "^6.0.10",
+    "@react-navigation/native-stack": "^6.6.1",
+    "expo-font": "~9.2.1",
+    "expo-linear-gradient": "~9.2.0",
+    "expo-splash-screen": "~0.11.2",
+    "formik": "^2.2.9",
+    "react-native-image-view": "^2.1.9",
+    "expo-app-loading": "1.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0"
