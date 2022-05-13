@@ -27,14 +27,14 @@ function Slide({ data }) {
     );
 }
 export const Tourdet3 = () => {
-    const [ff, setff] = useState([0.35, 0.6,false])
+    const [ff, setff] = useState([0.45, 0.5,false])
     const move=(i)=>{
         if(i==1){
             setff([0.1,0.85,true])
 
         }
         if(i==0){
-            setff([0.35,0.6,false])
+            setff([0.45,0.5,false])
  
         }
 
@@ -42,8 +42,11 @@ export const Tourdet3 = () => {
     return (
         <NativeBaseProvider>
             <AppBar />
+            
             <View flex={1} flexDirection="column">
+                
                 <View flex={ff[0]}>
+                    
                     <FlatList
                         data={slideList}
                         renderItem={({ item }) => {

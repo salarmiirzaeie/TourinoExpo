@@ -21,6 +21,7 @@ import React,{Suspense} from 'react'
 
 import { Text ,NativeBaseProvider,Circle} from "native-base";
 import { Tourdet3 } from "./components/Details/Tourdet3";
+import { AddForm2 } from "./components/Add/AddForm2";
 export default function App() {
 
   return (
@@ -105,7 +106,7 @@ function Tabstack() {
             </NativeBaseProvider>
           ),
         }}
-        component={Tourdet3}
+        component={AddTour}
       />
       <Tab.Screen
         name="s"
