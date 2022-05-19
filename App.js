@@ -12,12 +12,11 @@ import { CampProfile } from "./Pages/CampProfile";
 import { SearchPage } from "./Pages/SearchPage";
 import { AddTour } from "./Pages/AddTour";
 import{Home2}from"./Pages/Home2"
-import { TourDet2 } from "./components/Details/TourDet2";
-
+import { Provider } from "react-redux";
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 const MainStack = createNativeStackNavigator();
 import React,{Suspense} from 'react'
-
+import Store from "./assets/State-Management/Store";
 
 import { Text ,NativeBaseProvider,Circle} from "native-base";
 import { Tourdet3 } from "./components/Details/Tourdet3";
@@ -27,6 +26,7 @@ export default function App() {
   return (
    
     <NavigationContainer>
+      {/* <Provider store={Store}> */}
       <MainStack.Navigator
         screenOptions={{
           headerShown: false,
@@ -45,6 +45,8 @@ export default function App() {
 
 
       </MainStack.Navigator>
+      {/* </Provider>
+       */}
     </NavigationContainer>
   );
 }
